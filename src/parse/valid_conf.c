@@ -6,7 +6,7 @@
 /*   By: dtassel <dtassel@42.nice.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 02:14:11 by kali              #+#    #+#             */
-/*   Updated: 2023/09/21 03:13:45 by dtassel          ###   ########.fr       */
+/*   Updated: 2023/10/13 07:54:31 by dtassel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int	validate_path(char *path)
 
 int	check_valid_path(t_cub *game)
 {
-	if (validate_path(game->texture.north) == 1)
+	if (validate_path(game->texture.path_north) == 1)
 		return (1);
-	else if (validate_path(game->texture.south) == 1)
+	else if (validate_path(game->texture.path_south) == 1)
 		return (1);
-	else if (validate_path(game->texture.east) == 1)
+	else if (validate_path(game->texture.path_east) == 1)
 		return (1);
-	else if (validate_path(game->texture.west) == 1)
+	else if (validate_path(game->texture.path_west) == 1)
 		return (1);
 	return (0);
 }
@@ -54,16 +54,17 @@ void	check_valid_conf(t_cub *game)
 		|| game->count_color_f > 1 || game->count_color_f == 0)
 	{
 		free_array(game->engine.cub);
-		game_over_error("Error : Invalid of 'C' and/or 'F' lines.\n", game);
+		ft_error_free("Error : Invalid of 'C' and/or 'F' lines.\n", game);
 	}
-	if (check_rgb(game->ceiling.r, game->ceiling.g, game->ceiling.b) == 1)
+	if (check_rgb(game->ceiling_col.r, game->ceiling_col.g,
+			game->ceiling_col.b) == 1)
 	{
 		free_array(game->engine.cub);
-		game_over_error("Error Invalid value(s) ceiling RGB.\n", game);
+		ft_error_free("Error Invalid value(s) ceiling RGB.\n", game);
 	}
-	if (check_rgb(game->floor.r, game->floor.g, game->floor.b) == 1)
+	if (check_rgb(game->floor_col.r, game->floor_col.g, game->floor_col.b) == 1)
 	{
 		free_array(game->engine.cub);
-		game_over_error("Error Invalid value(s) floor RGB.\n", game);
+		ft_error_free("Error Invalid value(s) floor RGB.\n", game);
 	}
 }

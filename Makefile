@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dtassel <dtassel@42.nice.fr>               +#+  +:+       +#+         #
+#    By: phudyka <phudyka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 15:51:03 by phudyka           #+#    #+#              #
-#    Updated: 2023/09/28 04:42:32 by dtassel          ###   ########.fr        #
+#    Updated: 2023/10/12 10:42:23 by phudyka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,26 @@
 NAME            = cub3D
 
 # Compilateur
-CC              = gcc
+CC              = gcc -g -o
 
 # Flags de compilation
-CFLAGS          = -Wall -Wextra -Werror -I./minilibx-linux
+CFLAGS          = -Wall -Wextra -Werror -I./minilibx-linux 
 
 # Source files et Object files
-SRC             = src/main/main.c src/parse/parser.c src/main/game.c \
-                  src/main/exit.c src/main/render.c                 \
-                  src/parse/parse_texture.c src/main/draw3D.c       \
-                  src/parse/valid_conf.c src/moves/move.c           \
-                  src/moves/player_move.c src/moves/directions.c    \
-                  src/parse/get_map.c  src/parse/check_map.c        \
-                  src/moves/rotate.c src/main/utils.c               \
-                  src/main/draw.c
+SRC             = src/main/main.c src/parse/parser.c src/main/game.c 	\
+                  src/main/exit.c src/main/render.c 					\
+                  src/parse/parse_texture.c src/main/draw3D.c 			\
+                  src/parse/valid_conf.c src/moves/move.c 				\
+                  src/moves/player_move.c src/moves/directions.c 		\
+                  src/parse/get_map.c  src/parse/check_map.c 			\
+                  src/moves/rotate.c src/main/utils.c 					\
+                  src/main/draw.c src/main/texture.c 					\
+				  src/main/draw_weapon.c src/main/draw_sprite.c 		\
+				  src/moves/mouse.c src/main/input.c 					\
+				  src/main/weapon.c	src/main/free.c						\
+				  src/main/draw3D_utils.c src/main/texture_utils.c 		\
+				  src/main/draw_sprite_utils.c							\
+				  src/parse/check_map_utils.c src/parse/parser_utils.c	\
 
 OBJ_DIR         = obj
 OBJ             = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
